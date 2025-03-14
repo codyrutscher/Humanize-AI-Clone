@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Humanize AI Written Content To Pass Any AI Detector</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ai_humanizer/style.css' %}">
+</head>
+<body>
+     {% include 'ai_humanizer/navbar.html' %}
+    <div id="home-container" class="container">
+        <h1>Humanize AI Written Content To Pass Any AI Detector</h1>
+        <div class="word-counts">
+            {% if original_word_count %}
+                <p><strong>Original AI Text Word Count:</strong> {{ original_word_count }}</p>
+            {% endif %}
+            {% if humanized_word_count %}
+                <p><strong>Humanized Text Word Count:</strong> {{ humanized_word_count }}</p>
+            {% endif %}
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Humanize Content</button>
+             <button type="button" onclick="window.location.reload();">Clear Input</button>
+        </form>
+        {% if output %}
+            <h2>Humanized Content:</h2>
+            <div class="humanized-output">{{ output|linebreaks }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
+

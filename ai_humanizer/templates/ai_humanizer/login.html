@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ai_humanizer/style.css' %}">
+</head>
+<body>
+    {% include 'ai_humanizer/navbar.html' %}
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1>Login</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+            <p class="auth-alt">
+                Don't have an account? <a href="{% url 'signup' %}">Signup here</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
+

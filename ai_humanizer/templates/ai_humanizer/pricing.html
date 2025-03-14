@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pricing</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ai_humanizer/style.css' %}">
+</head>
+<body>
+    {% include 'ai_humanizer/navbar.html' %}
+    <div class="container pricing-container">
+        <h1>Pricing</h1>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h2>$10/month</h2>
+                <p>Up to 50,000 words</p>
+                    <form method="post" action="{% url 'purchase_subscription' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="plan_id" value="plan_10">
+                    <button type="submit" class="purchase-btn">Purchase</button>
+                </form>
+            </div>
+            <div class="pricing-card">
+                <h2>$15/month</h2>
+                <p>Up to 100,000 words</p>
+                <form method="post" action="{% url 'purchase_subscription' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="plan_id" value="plan_15">
+                    <button type="submit" class="purchase-btn">Purchase</button>
+                </form>
+            </div>
+            <div class="pricing-card">
+                <h2>$20/month</h2>
+                <p>Up to 300,000 words</p>
+                <form method="post" action="{% url 'purchase_subscription' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="plan_id" value="plan_20">
+                    <button type="submit" class="purchase-btn">Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
